@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import db from '../firebase';
+import RecipeCard from '../components/RecipeCard';
 import '../styles/Recipes.css'
 
 const Recipes = () => {
   const [recipes, setRecipes] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
+
   useEffect(() => {
     const unsubscribe = db.collection('recipes').onSnapshot((snapshot) => {
       const newRecipes = snapshot.docs.map((doc) => ({
@@ -16,23 +19,26 @@ const Recipes = () => {
     return () => unsubscribe();
   }, []);
 
-  console.log(recipes)
+  const filteredRecipes = recipes.filter((recipe) => {
+    return recipe.title.toLowerCase().includes(searchTerm.toLowerCase());
+  });
 
   return (
-    <main class='recipes'>
+    <main className='recipes'>
       <h1>Recipes</h1>
-      <ul class='recipe-list'>
-        {recipes.map((recipe) => (
-          <li class='recipe' key={recipe.id}>
-            <Link class='recipe-title'
-              to={{ pathname: `/recipe/${recipe.title}`, state: { title: recipe.title } }}
-            >
-              {recipe.title}
-            </Link>
-            <p class='recipe-description'>{recipe.description}</p>
-          </li>
+      <div className='search-bar'>
+        <input
+          type='text'
+          placeholder='Search recipes...'
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+      </div>
+      <div className='recipe-card-container'>
+        {filteredRecipes.map((recipe) => (
+          <RecipeCard key={recipe.id} recipe={recipe} />
         ))}
-      </ul>
+      </div>
     </main>
   );
 };

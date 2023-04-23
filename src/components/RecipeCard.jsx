@@ -1,40 +1,31 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import placeholder from '../images/placeholder.png'
+import { Link } from 'react-router-dom';
 import '../styles/RecipeCard.css'
-import placeholder from "../images/placeholder.png";
 
 const RecipeCard = ({ recipe }) => {
-    // create variable for image path
-    // const imagePath = `../images/${recipe.id}.jpg`;
-    const imagePath = require(`../images/${recipe.id}.jpg`) || placeholder;
-    console.log(recipe)
+  const tags = ['vegan', 'gluten-free']
+  const recipeImage = require(`../images/recipes/${recipe.id}${recipe.imageFileType}`)
+  const tempUrl = 'https://bbc.co.uk'
 
   return (
-    <div className="card">
-      <img className="card-img-top" src={imagePath} alt={recipe.title} />
-      <div className="card-body">
-        <h5 className="card-title">{recipe.title}</h5>
-        <p className="card-text">{recipe.description}</p>
-        <div>
-          <h6>Ingredients:</h6>
-          <ul>
-            {recipe.ingredients.map((ingredient, index) => (
-              <li key={index}>{ingredient}</li>
-            ))}
-          </ul>
-        </div>
-        <div>
-          <h6>Instructions:</h6>
-          {/* <p>{recipe.instructions}</p> */}
-          <ol>
-            {recipe.instructions.map((instruction, index) => (
-              <li key={index}>{instruction}</li>
-            ))}
-          </ol>
+    <div className='recipe-card'>
+      <Link to={tempUrl}>
+        <img className='recipe-image' src={recipeImage} onError={(e) => e.target.src = placeholder} alt={recipe.title} />
+        <h2 className='recipe-title'><a href={recipe.url || tempUrl}>{recipe.title}</a></h2>
+      </Link>
+      <div className='recipe-details'>
+        <p className='recipe-description'>{recipe.description}</p>
+        <div className='recipe-tags'>
+          {tags.map((tag) => (
+            <span className='tag' key={tag}>{tag}</span>
+          ))}
         </div>
       </div>
+      
     </div>
   );
 };
 
 export default RecipeCard;
+
