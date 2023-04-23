@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import db from '../firebase';
+import '../styles/Recipes.css'
 
 const Recipes = () => {
   const [recipes, setRecipes] = useState([]);
@@ -15,21 +16,24 @@ const Recipes = () => {
     return () => unsubscribe();
   }, []);
 
+  console.log(recipes)
+
   return (
-    <div>
+    <main class='recipes'>
       <h1>Recipes</h1>
-      <ul>
+      <ul class='recipe-list'>
         {recipes.map((recipe) => (
-          <li key={recipe.id}>
-            <Link
+          <li class='recipe' key={recipe.id}>
+            <Link class='recipe-title'
               to={{ pathname: `/recipe/${recipe.title}`, state: { title: recipe.title } }}
             >
               {recipe.title}
             </Link>
+            <p class='recipe-description'>{recipe.description}</p>
           </li>
         ))}
       </ul>
-    </div>
+    </main>
   );
 };
 

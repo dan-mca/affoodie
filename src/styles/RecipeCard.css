@@ -1,0 +1,87 @@
+.card {
+    width: 80%;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-img-top {
+    width: 50%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .card-body {
+    margin-bottom: 20px;
+  }
+  
+  .card-title {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .card-text {
+    font-size: 24px;
+    margin-bottom: 20px;
+    line-height: 1.5;
+  }
+  
+  .card-body ul {
+    list-style: disc;
+    margin-left: 40px;
+    font-size: 24px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .card-body li {
+    margin-bottom: 10px;
+  }
+  
+  .card-body h6 {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .card-body ol {
+    list-style: decimal;
+    margin-left: 40px;
+    font-size: 24px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+  
+  .card-body ol li {
+    margin-bottom: 10px;
+  }
+  
+  .btn-primary {
+    display: block;
+    margin-top: 20px;
+    background-color: #007bff;
+    border-color: #007bff;
+    color: #fff;
+    padding: 12px 24px;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 1.5;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  .btn-primary:hover {
+    background-color: #0062cc;
+  }
+  

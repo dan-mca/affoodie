@@ -1,0 +1,42 @@
+/* Recipes.css */
+.recipes {
+  padding: 0 15%;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  ul.recipe-list {
+    flex-direction: column;
+}
+
+.recipe-title {
+  color: black;
+}
+
+.recipe-description {
+ text-align: left;
+ font-size: 16px;
+ line-height: 1;
+ margin-bottom: 48px;
+}
+  
+  li {
+    margin-bottom: 1em;
+  }
+  
+  a {
+    color: blue;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+    color: blue!important;
+  }
+  

@@ -1,10 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import '../styles/RecipeCard.css'
+import placeholder from "../images/placeholder.png";
 
 const RecipeCard = ({ recipe }) => {
+    // create variable for image path
+    // const imagePath = `../images/${recipe.id}.jpg`;
+    const imagePath = require(`../images/${recipe.id}.jpg`) || placeholder;
+    console.log(recipe)
+
   return (
     <div className="card">
-      <img className="card-img-top" src={recipe.image} alt={recipe.title} />
+      <img className="card-img-top" src={imagePath} alt={recipe.title} />
       <div className="card-body">
         <h5 className="card-title">{recipe.title}</h5>
         <p className="card-text">{recipe.description}</p>
@@ -24,11 +31,7 @@ const RecipeCard = ({ recipe }) => {
               <li key={index}>{instruction}</li>
             ))}
           </ol>
-          
         </div>
-        <Link to={`/recipe/${recipe.title}`} className="btn btn-primary">
-          Read More
-        </Link>
       </div>
     </div>
   );
